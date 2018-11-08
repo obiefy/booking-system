@@ -12,6 +12,16 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    @if($errors->any())
+                        <div class="alert alert-danger" >
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form
                         role="form"
                         method="POST"
@@ -25,10 +35,11 @@
                                         ><i class="ni ni-email-83"></i
                                     ></span>
                                 </div>
-                                <input
+                                <input required
                                     class="form-control"
                                     placeholder="البريد الإلكتروني"
                                     type="email"
+                                    name="email"
                                 />
                             </div>
                         </div>
@@ -39,21 +50,13 @@
                                         ><i class="ni ni-lock-circle-open"></i
                                     ></span>
                                 </div>
-                                <input
+                                <input required
                                     class="form-control"
                                     placeholder="كلمة المرور"
-                                    type="password"
+                                    type="password",
+                                    name="password"
                                 />
                             </div>
-                        </div>
-                        <div
-                            class="custom-control custom-control-alternative custom-checkbox"
-                        >
-                            <input
-                                class="custom-control-input"
-                                id=" customCheckLogin"
-                                type="checkbox"
-                            />
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary my-4">
