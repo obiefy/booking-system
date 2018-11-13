@@ -149,7 +149,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="bg-gray pt-5">
+            <div class="bg-gray pt-5 pb-5">
                 <div class="container">@yield('content')</div>
             </div>
         </div>
