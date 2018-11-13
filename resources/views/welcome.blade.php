@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
 
-<section class="section section-lg bg-success p-5 mb-5">
+<section class="section section-lg p-5 mb-5">
     <div class="container">
         <div class="row row-grid align-items-center">
             <div class="col-md-6 order-md-2">
@@ -147,4 +147,226 @@
     </div>
 </div>
 
+<section class="section section-lg">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-lg">
+            <div class="col-lg-8">
+                <h2 class="display-3">The amazing Team</h2>
+                <p class="lead text-muted">
+                    According to the National Oceanic and Atmospheric
+                    Administration, Ted, Scambos, NSIDClead scentist, puts the
+                    potentially record maximum.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="px-4">
+                    <img
+                        src="{{ asset('img/theme/team-1-800x800.jpg') }}"
+                        class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                        style="width: 200px;"
+                    />
+                    <div class="pt-4 text-center">
+                        <h5 class="title">
+                            <span class="d-block mb-1">Ryan Tompson</span>
+                            <small class="h6 text-muted">Web Developer</small>
+                        </h5>
+                        <div class="mt-3">
+                            <a
+                                href="#"
+                                class="btn btn-warning btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-warning btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-warning btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="px-4">
+                    <img
+                        src="{{ asset('img/theme/team-2-800x800.jpg') }}"
+                        class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                        style="width: 200px;"
+                    />
+                    <div class="pt-4 text-center">
+                        <h5 class="title">
+                            <span class="d-block mb-1">Romina Hadid</span>
+                            <small class="h6 text-muted"
+                                >Marketing Strategist</small
+                            >
+                        </h5>
+                        <div class="mt-3">
+                            <a
+                                href="#"
+                                class="btn btn-primary btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-primary btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-primary btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="px-4">
+                    <img
+                        src="{{ asset('img/theme/team-3-800x800.jpg') }}"
+                        class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                        style="width: 200px;"
+                    />
+                    <div class="pt-4 text-center">
+                        <h5 class="title">
+                            <span class="d-block mb-1">Alexander Smith</span>
+                            <small class="h6 text-muted">UI/UX Designer</small>
+                        </h5>
+                        <div class="mt-3">
+                            <a
+                                href="#"
+                                class="btn btn-info btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-info btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-info btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="px-4">
+                    <img
+                        src="{{ asset('img/theme/team-4-800x800.jpg') }}"
+                        class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                        style="width: 200px;"
+                    />
+                    <div class="pt-4 text-center">
+                        <h5 class="title">
+                            <span class="d-block mb-1">John Doe</span>
+                            <small class="h6 text-muted">Founder and CEO</small>
+                        </h5>
+                        <div class="mt-3">
+                            <a
+                                href="#"
+                                class="btn btn-success btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-success btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a
+                                href="#"
+                                class="btn btn-success btn-icon-only rounded-circle"
+                            >
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- contact Us section -->
+
+<section class="section section-lg pt-lg-0 section-contact-us">
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-lg-8">
+                <div class="card bg-gradient-secondary shadow">
+                    <div class="card-body p-lg-5">
+                        <h4 class="mb-1">Want to work with us?</h4>
+                        <p class="mt-0">
+                            Your project is very important to us.
+                        </p>
+                        <div class="form-group mt-5">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        ><i class="ni ni-user-run"></i
+                                    ></span>
+                                </div>
+                                <input
+                                    class="form-control"
+                                    placeholder="Your name"
+                                    type="text"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        ><i class="ni ni-email-83"></i
+                                    ></span>
+                                </div>
+                                <input
+                                    class="form-control"
+                                    placeholder="Email address"
+                                    type="email"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <textarea
+                                class="form-control form-control-alternative"
+                                name="name"
+                                rows="4"
+                                cols="80"
+                                placeholder="Type a message..."
+                            ></textarea>
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                class="btn btn-default btn-round btn-block btn-lg"
+                            >
+                                Send Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

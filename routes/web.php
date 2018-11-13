@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Agents search
+Route::get('/search', function(){
+    return view('agents.search');
+});

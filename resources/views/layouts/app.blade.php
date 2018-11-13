@@ -22,12 +22,13 @@
 
 <!-- Icons -->
 <link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-<link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
   
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/argon.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/argon-rtl.css') }}" rel="stylesheet" />
+        
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     </head>
     <body>
@@ -148,7 +149,7 @@
                     </div>
                 </div>
             </nav>
-            <div class="bg-gray pt-5">
+            <div class="bg-gray pt-5 pb-5">
                 <div class="container">@yield('content')</div>
             </div>
         </div>
