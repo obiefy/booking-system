@@ -37,7 +37,7 @@
                         {{ $agent->phone }}
                     </td>
                     <td>
-                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                    @agent_show_city_label(["agent" => $agent])
                     </td>
                     <td>
                         <a href="" class="btn btn-default btn-sm">تعديل</a>

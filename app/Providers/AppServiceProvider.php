@@ -22,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
 
         // documents
         Blade::include('components.agents.show_type_label', 'agent_show_type_label'); 
+        Blade::include('components.agents.show_city_label', 'agent_show_city_label'); 
+        Blade::include('components.agents.show_price_label', 'agent_show_price_label'); 
     }
 
     /**

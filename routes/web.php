@@ -23,7 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('agent', 'UserController');
 
 // Agents search
-Route::get('/search', function(){
-    return view('agents.search');
-});
+Route::get('/search', "UserController@search_form")->name('agents.show_all');
+Route::post('/search', "UserController@search")->name('agents.search');
 

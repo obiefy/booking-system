@@ -60,13 +60,20 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                <a class="btn btn-neutral btn-icon " href="{{ route('agents.show_all') }}"
+                                    >عرض الصالات</a
+                                >
+                            </li>
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <a class="btn btn-neutral btn-icon" href="{{ route('login') }}"
+                                <a class="btn btn-neutral btn-icon mr-1" href="{{ route('login') }}"
                                     >تسجيل دخول</a
                                 >
                             </li>
+
+                            
 
                             @else
                             
@@ -95,7 +102,7 @@
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                                     >
-                                        {{ __("Logout") }}
+                                        تسجبل خروج
                                     </a>
 
                                     <form
@@ -139,5 +146,18 @@
           </div>
         </div>
       </footer>
+
+
+        <!-- Core -->
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
+        
+        
+
+        <!-- Argon JS -->
+        <script src="{{ asset('js/argon.min.js') }}"></script>
+
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

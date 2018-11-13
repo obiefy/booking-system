@@ -6,3 +6,10 @@
     font-weight: unset;
     font-size: 12px;
 }
+
+.card-title {
+    font-size: 18px;
+}
+.card {
+    margin-bottom: 20px;
+}
