@@ -21,8 +21,9 @@
         />
 
 <!-- Icons -->
-<link href="../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+  <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
   
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
@@ -60,7 +61,7 @@
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"
+                                <a class="btn btn-neutral btn-icon" href="{{ route('login') }}"
                                     >تسجيل دخول</a
                                 >
                             </li>
