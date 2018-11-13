@@ -12,17 +12,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            
-            // [
+        $users =  [
+            [
                 "name" => "Obay Hamed",
                 "email" => "obay@obay.com",
                 "password" => Hash::make("123456"),
                 "phone" => "0917815544",
                 "agent_type" => "hall",
                 "about" => "Obay Hamed asd asd asd asd",
-            // ]
-            
-        ]);
+            ],
+            [
+                "name" => "درة بحري",
+                "email" => "dorat@obay.com",
+                "password" => Hash::make("123456"),
+                "phone" => "0917815544",
+                "agent_type" => "hall",
+                "about" => "Obay Hamed asd asd asd asd",
+            ]
+        ];
+
+        foreach($users as $user){
+
+            User::create($user);
+        }
     }
 }

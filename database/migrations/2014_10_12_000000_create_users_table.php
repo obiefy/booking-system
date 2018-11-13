@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('agent_type')->default("hall");
             $table->longText('about')->nullable();
             
+            $table->longText('address')->nullable();
+            
             $table->rememberToken();
             $table->timestamps();
         });
