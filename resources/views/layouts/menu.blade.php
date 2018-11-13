@@ -32,6 +32,7 @@
         @endif
 
         @yield('main')
+        
     </div>
 </div>
 @endsection

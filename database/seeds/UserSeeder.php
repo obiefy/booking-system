@@ -31,9 +31,20 @@ class UserSeeder extends Seeder
             ]
         ];
 
-        foreach($users as $user){
-
-            User::create($user);
+        $length = 0;
+        while($length != 50){
+            $user = [
+                'name' => str_random(10),
+            'email' => str_random(10).'@gmail.com',
+            'password' => bcrypt('secret'),
+            'phone' => str_random(10),
+            "agent_type" => "hall",
+                "about" => str_random(100),
+            ];
+            array_push($users, $user);
+            $length++;
         }
+
+        DB::table('users')->insert($users);
     }
 }

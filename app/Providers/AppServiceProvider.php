@@ -16,7 +16,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Blade::component('components.agentss.show_type_label', 'agent_show_type_label');
+
+        // Carbon::setLocale(Config::get('app.locale'));
+        //ASSIGNING COMPONENTS
+
+        // documents
+        Blade::include('components.agents.show_type_label', 'agent_show_type_label'); 
     }
 
     /**

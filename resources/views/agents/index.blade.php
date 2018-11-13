@@ -31,7 +31,7 @@
                         {{ $agent->name }}
                     </th>
                     <td>
-                        @agent_show_type_label([$agent])
+                        @agent_show_type_label(["agent" => $agent])
                     </td>
                     <td>
                         {{ $agent->phone }}
