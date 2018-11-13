@@ -19,7 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Agents routes
+Route::resource('agent', 'UserController');
+
 // Agents search
 Route::get('/search', function(){
     return view('agents.search');
 });
+

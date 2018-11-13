@@ -7,20 +7,21 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <title>نظام الحجوزات</title>
+        <title>حجز الصالات</title>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <!-- <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link
             href="https://fonts.googleapis.com/css?family=Nunito"
             rel="stylesheet"
             type="text/css"
-        />
+        /> -->
 
 <!-- Icons -->
+
 <link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
   
@@ -36,7 +37,7 @@
             <nav class="navbar navbar-expand-md navbar-dark bg-default">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        نظام الحجوزات
+                        حجز الصالات
                     </a>
                     <button
                         class="navbar-toggler"
@@ -68,44 +69,7 @@
                             </li>
 
                             @else
-                            <li class="nav-item dropdown show">
-            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="https://cdn2.tokendaily.co/user-images/4a2359b48887048317100f5e5d28d0d6.jpeg">
-                </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">أويس ناما</span>
-                </div>
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right show">
-              <div class=" dropdown-header noti-title">
-                <h6 class="text-overflow m-0">مرحبا!</h6>
-              </div>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>الحساب الشخصي</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>الأعدادات</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>اخر الاخبار</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-support-16"></i>
-                <span>مساعده</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="ni ni-user-run"></i>
-                <span>تسجيل خروج</span>
-              </a>
-            </div>
-          </li>
+                            
                             <li class="nav-item dropdown">
                                 <a
                                     id="navbarDropdown"
@@ -158,14 +122,14 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              <a href="#" class="font-weight-bold ml-1" target="_blank"> نظام الحجوزات</a>
+              <a href="#" class="font-weight-bold ml-1" target="_blank"> حجز الصالات</a>
               © 2018 
             </div>
           </div>
           <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
               <li class="nav-item">
-                <a href="#" class="nav-link" target="_blank"> نظام الحجوزات</a>
+                <a href="#" class="nav-link" target="_blank"> حجز الصالات</a>
               </li>
               <li class="nav-item">
                 <a href="#/presentation" class="nav-link" target="_blank">About Us</a>
