@@ -20,10 +20,14 @@ class AppServiceProvider extends ServiceProvider
         // Carbon::setLocale(Config::get('app.locale'));
         //ASSIGNING COMPONENTS
 
-        // documents
+        // components for labels
         Blade::include('components.agents.show_type_label', 'agent_show_type_label'); 
         Blade::include('components.agents.show_city_label', 'agent_show_city_label'); 
         Blade::include('components.agents.show_price_label', 'agent_show_price_label'); 
+
+        // Agents component
+        Blade::include('components.agents.agents', 'agents'); 
+        Blade::include('components.agents.agent', 'agent'); 
     }
 
     /**
