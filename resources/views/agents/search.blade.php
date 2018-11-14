@@ -73,9 +73,9 @@
                                 type="range"
                                 name="price"
                                 class="custom-range"
-                                min="100"
-                                max="500"
-                                step="100"
+                                min="500"
+                                max="50000"
+                                step="1500"
                                 id="customRange3"
                                 onchange="updatePriceData(this.value);"
                             />

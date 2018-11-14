@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Price;
+use Auth;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
@@ -14,7 +15,10 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        $prices = Auth::user()->prices;
+        return view('prices.index', [
+            'prices' => $prices
+        ]);
     }
 
     /**

@@ -109,7 +109,7 @@ class UserController extends Controller
 
          // price result
          $price_result = User::whereHas('prices', function ($query) use ($request) {
-            $query->where('price', $request->price);
+            $query->where('price', '<',$request->price);
         })->get();
 
         // address result
@@ -121,8 +121,10 @@ class UserController extends Controller
         $result = $city_result->merge($type_result);
         $result = $city_result->merge($price_result);
 
+        $result = $result->unique();
+
         return view('agents.search', [
-            "agents" => $type_result
+            "agents" => $result
         ]);
     }
 }

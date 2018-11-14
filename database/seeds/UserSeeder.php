@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 "password" => Hash::make("123456"),
                 "phone" => "0917815544",
                 "agent_type" => "venue",
+                "city" => "omdurman",
                 "about" => "Obay Hamed asd asd asd asd",
                 "address" => "شارع عبيد ختم",
             ],
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
                 "password" => Hash::make("123456"),
                 "phone" => "0917815544",
                 "agent_type" => "venue",
+                "city" => "bahri",
                 "about" => "Obay Hamed asd asd asd asd",
                 "address" => "شارع  أفريقيا",
             ]
@@ -38,12 +40,15 @@ class UserSeeder extends Seeder
         $length = 0;
         while($length != 10){
             $user = [
+                
                 'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-            'phone' => str_random(10),
-            "agent_type" => "hall",
+                'email' => str_random(10).'@gmail.com',
+                'password' => bcrypt('secret'),
+                'phone' => str_random(10),
+                "agent_type" => "hall",
+                "city" => "khartoum",
                 "about" => str_random(100),
+                "address" => "شارع  أفريقيا",
             ];
             array_push($users, $user);
             $length++;

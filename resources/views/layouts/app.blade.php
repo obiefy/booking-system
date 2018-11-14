@@ -13,23 +13,31 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
-        <!-- <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <!--
+            <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+            <link
+                href="https://fonts.googleapis.com/css?family=Nunito"
+                rel="stylesheet"
+                type="text/css"
+            />
+        -->
+
+        <!-- Icons -->
+
         <link
-            href="https://fonts.googleapis.com/css?family=Nunito"
+            href="{{ asset('vendor/nucleo/css/nucleo.css') }}"
             rel="stylesheet"
-            type="text/css"
-        /> -->
+        />
+        <link
+            href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}"
+            rel="stylesheet"
+        />
 
-<!-- Icons -->
-
-<link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-  <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-  
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/argon.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/argon-rtl.css') }}" rel="stylesheet" />
-        
+
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     </head>
     <body>
@@ -60,23 +68,25 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                                <a class="btn btn-neutral btn-icon " href="{{ route('agents.show_all') }}"
+                            <li class="nav-item">
+                                <a
+                                    class="btn btn-neutral btn-icon "
+                                    href="{{ route('agents.show_all') }}"
                                     >عرض الصالات</a
                                 >
                             </li>
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
-                                <a class="btn btn-neutral btn-icon mr-1" href="{{ route('login') }}"
+                                <a
+                                    class="btn btn-neutral btn-icon mr-1"
+                                    href="{{ route('login') }}"
                                     >تسجيل دخول</a
                                 >
                             </li>
 
-                            
-
                             @else
-                            
+
                             <li class="nav-item dropdown">
                                 <a
                                     id="navbarDropdown"
@@ -96,6 +106,13 @@
                                     class="dropdown-menu dropdown-menu-right"
                                     aria-labelledby="navbarDropdown"
                                 >
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ route('agent.index') }}"
+                                    >
+                                        لوحة التحكم
+                                    </a>
+
                                     <a
                                         class="dropdown-item"
                                         href="{{ route('logout') }}"
@@ -126,34 +143,47 @@
         </div>
 
         <footer class="footer bg-default p-5">
-        <div class="row align-items-center justify-content-xl-between">
-          <div class="col-xl-6">
-            <div class="copyright text-center text-xl-left text-muted">
-              <a href="#" class="font-weight-bold ml-1" target="_blank"> حجز الصالات</a>
-              © 2018 
+            <div class="row align-items-center justify-content-xl-between">
+                <div class="col-xl-6">
+                    <div class="copyright text-center text-xl-left text-muted">
+                        <a
+                            href="#"
+                            class="font-weight-bold ml-1"
+                            target="_blank"
+                        >
+                            حجز الصالات</a
+                        >
+                        © 2018
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <ul
+                        class="nav nav-footer justify-content-center justify-content-xl-end"
+                    >
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" target="_blank">
+                                حجز الصالات</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="#/presentation"
+                                class="nav-link"
+                                target="_blank"
+                                >About Us</a
+                            >
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="col-xl-6">
-            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-              <li class="nav-item">
-                <a href="#" class="nav-link" target="_blank"> حجز الصالات</a>
-              </li>
-              <li class="nav-item">
-                <a href="#/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
-      </footer>
-
+        </footer>
 
         <!-- Core -->
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
-        
-        
+        <!--
+            <script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
+        -->
 
         <!-- Argon JS -->
         <script src="{{ asset('js/argon.min.js') }}"></script>
