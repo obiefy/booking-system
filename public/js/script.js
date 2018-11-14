@@ -19,3 +19,5 @@ $(function() {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+// rating

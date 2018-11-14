@@ -11,6 +11,8 @@
                             @agent_show_city_label(["agent" => $agent])
                             @agent_show_price_label(["agent" => $agent])
 
+                            
+
                             <span
                                 class="badge badge-default float-left"
                                 data-toggle="tooltip"
@@ -22,5 +24,9 @@
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-primary">حجز</a>
+
+                            <div class="float-left">
+                            @rating()
+                            </div>
                         </div>
                     </div>

@@ -13,3 +13,10 @@
 .card {
     margin-bottom: 20px;
 }
+
+/* Rating */
+
+/* Rating check */
+.checked {
+    color: orange;
+}

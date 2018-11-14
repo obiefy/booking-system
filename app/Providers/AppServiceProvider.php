@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
         // Agents component
         Blade::include('components.agents.agents', 'agents'); 
         Blade::include('components.agents.agent', 'agent'); 
+        // show rating
+        Blade::include('components.agents.rating', 'rating'); 
     }
 
     /**
