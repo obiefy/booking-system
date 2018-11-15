@@ -24,16 +24,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*
 
+    SUPER ADMIN ROUTES
 
-// SUPER ADMIN ROUTES
+*/
 Route::prefix('admin')->group(function () {
     
     // Agents routes
     Route::resource('agent', 'UserController');
 });
 
-// AGENT ADMIN ROUTES
+/*
+
+AGENT ADMIN ROUTES
+
+*/
+
 Route::prefix('agent')->group(function () {
     
     // Booking routes

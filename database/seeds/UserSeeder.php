@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         $users =  [
             [
                 "name" => "Obay Hamed",
-                "email" => "obay@obay.com",
+                "email" => "admin@admin.com",
                 "password" => Hash::make("123456"),
                 "phone" => "0917815544",
                 "agent_type" => "venue",
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "name" => "درة بحري",
-                "email" => "dorat@obay.com",
+                "email" => "agent@agent.com",
                 "password" => Hash::make("123456"),
                 "phone" => "0917815544",
                 "agent_type" => "venue",

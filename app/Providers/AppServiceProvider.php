@@ -30,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.agents.agent', 'agent'); 
         // show rating
         Blade::include('components.agents.rating', 'rating'); 
+
+
+
+        // modal dialog
+        Blade::include('components.modal', 'modal'); 
     }
 
     /**

@@ -138,7 +138,15 @@
                 </div>
             </nav>
             <div class="bg-gray pt-5 pb-5">
-                <div class="app">@yield('content')</div>
+                <div class="app">
+                    <div class="container">
+                    @if(Session::has('success'))
+                    <p class="alert alert-success">{{ Session::get('success') }}</p>
+                    @endif
+
+                    </div>  
+
+                @yield('content')</div>
             </div>
         </div>
 
