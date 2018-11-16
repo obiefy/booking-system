@@ -14,9 +14,9 @@ class Menu extends Model
         return $this->hasMany(Option::class);
     }
 
-    public static function getMenu(string $code){
+    public static function get_menu(string $code){
         try{
-            return Menu::where('code',$code)->first()->settings()->orderBy('order','asc')->get(['id','code','name']);
+            return Menu::where('code',$code)->first();//->options;//->get(['id','code','name']);
         }catch (\Error $e){
             return [];
         }

@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function prices(){
         return $this->hasMany("App\Price", "agent_id");
     }
+
+    public function meals(){
+        return $this->hasMany("App\Meal", "agent_id");
+    }
 }

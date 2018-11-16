@@ -48,6 +48,9 @@ Route::prefix('agent')->group(function () {
 
     // Prices routes
     Route::resource('price', 'PriceController');
+
+     // Meals routes
+     Route::resource('meal', 'MealController');
 });
 
 

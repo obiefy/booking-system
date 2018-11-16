@@ -35,5 +35,6 @@ class GeneralDataSeeder extends Seeder
         DB::table('prices')->insert($prices);
 
 
+        
     }
 }

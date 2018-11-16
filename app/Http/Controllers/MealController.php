@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Meal;
+use App\Menu;
+use Auth;
+use Session;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -14,7 +17,12 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        $meals = Auth::user()->meals;
+        $meal_types = Menu::get_menu("mealType")->options;
+        return view('meals.index', [
+            'meals' => $meals,
+            'meal_types' => $meal_types
+        ]);
     }
 
     /**
@@ -35,7 +43,12 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $meal = new Meal($request->all());
+        $meal->agent_id = Auth::id();
+        $meal->save();
+
+        Session::flash('success', 'تمت اضافة الوجبة بنجاح');
+        return redirect()->route('meal.index');
     }
 
     /**
@@ -69,7 +82,11 @@ class MealController extends Controller
      */
     public function update(Request $request, Meal $meal)
     {
-        //
+        $meal->update($request->all());
+        Session::flash('success', 'تم التعدبل على الوجبة بنجاح');
+        
+
+        return redirect()->route('meal.index');
     }
 
     /**
@@ -80,6 +97,11 @@ class MealController extends Controller
      */
     public function destroy(Meal $meal)
     {
-        //
+        
+        $meal->delete();
+        Session::flash('success', 'تمت عملية  الحذف بنجاح');
+        
+
+        return redirect()->route('meal.index');
     }
 }

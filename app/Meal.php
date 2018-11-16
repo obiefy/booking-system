@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
-    protected $fillable = ['title', 'content', 'price'];
+    protected $fillable = ['title', 'type', 'content', 'price'];
 }
