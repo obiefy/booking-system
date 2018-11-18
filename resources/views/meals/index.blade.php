@@ -23,6 +23,7 @@
                 <tr>
                     <th scope="col">الرقم</th>
                     <th scope="col">الوجبة</th>
+                    <th scope="col">السعر</th>
                     <th scope="col">نوعها</th>
                     <th scope="col">العمليات</th>
                 </tr>
@@ -32,6 +33,7 @@
                 <tr>
                     <td>{{ $meal->id }}</td>
                     <td>{{ $meal->title }}</td>
+                    <td>{{ $meal->price }}</td>
                     <td>{{ App\Option::get_name($meal->type) }}</td>
 
                     <td>
@@ -53,7 +55,7 @@
                             >حذف</a
                         >
 
-                         @include('layouts.modal', ["title" => "هل انت متأكد من جذف السعر", "modal_id" => "delete-meal-".$meal->id,
+                         @include('layouts.modal', ["title" => "هل انت متأكد من جذف الوجية", "modal_id" => "delete-meal-".$meal->id,
 "url" => route('meal.destroy', $meal), "method" => "DELETE"]) 
 
                     </td>

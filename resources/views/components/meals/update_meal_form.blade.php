@@ -1,26 +1,32 @@
 @extends('layouts.modal') @section($modal_id)
 
 <div class="form-group">
-    <label for="" class="label">تاريخ البداية</label>
+    <label for="" class="label">الوجبة</label>
     <input
-        type="date"
+        type="text"
         class="form-control form-control-alternative"
-        name="start_date"
-        placeholder="تاريخ البداية"
+        name="title"
         required
-        value="{{ $meal->start_date }}"
+        value="{{ $meal->title }}"
     />
 </div>
 
+
+
 <div class="form-group">
-    <label for="" class="label">تاريخ النهاية</label>
-    <input
-        type="date"
-        class="form-control form-control-alternative"
-        name="end_date"
-        required
-        value="{{ $meal->end_date }}"
-    />
+    <label for="" class="label">نوعها</label>
+    <select name="type" id="type" class="form-control form-control-alternative">
+        @foreach($meal_types as $meal_type)
+            <option value="{{ $meal_type->code }}" {{ $meal->type == $meal_type->code ? 'selected' : '' }}>{{ $meal_type->name }}</option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="" class="label">المحتوى</label>
+    <textarea name="content" id="content" rows="5" class="form-control">
+    {{ $meal->content }}
+    </textarea>
 </div>
 
 <div class="form-group">
@@ -28,9 +34,9 @@
     <input
         type="number"
         class="form-control form-control-alternative"
-        name="meal"
+        name="price"
         required
-        value="{{ $meal->meal }}"
+        value="{{ $meal->price }}"
     />
 </div>
 @endsection
