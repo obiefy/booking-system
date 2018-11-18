@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('agent/{user}',"UserController@show");
 // Agents search
 Route::get('/agents', "UserController@search_form")->name('agents.show_all');
 Route::post('/agents', "UserController@search")->name('agents.search');
@@ -44,7 +45,8 @@ AGENT ADMIN ROUTES
 
 */
 
-Route::prefix('agent')->middleware(['agent_admin'])->group(function () {
+
+Route::middleware(['agent_admin'])->group(function () {
     
     // Booking routes
     Route::get('bookings', 'BookingController@index')->name('booking.index');
