@@ -8,6 +8,7 @@ use Session;
 use App\User;
 use App\Menu;
 use App\Photo;
+use App\Service;
 class UserController extends Controller
 {
     /**
@@ -31,7 +32,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
+        $agent_types = Menu::get_menu("agentType")->options;
+        $cities = Menu::get_menu("city")->options;
+        return view('agents.create',[
+            'agent_types' => $agent_types,
+            'cities' => $cities,
+        ]);
     }
 
     /**
@@ -42,7 +49,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $agent = new User($request->all());
+        $agent->save();
+
+        Session::flash('success', 'تمت اضافة القاعة بنجاح');
+        return redirect()->route('agent.index');
     }
 
     /**
@@ -140,17 +151,21 @@ class UserController extends Controller
 
         $agent_types = Menu::get_menu("agentType")->options;
         $cities = Menu::get_menu("city")->options;
+        $services = Service::all();
         return view('agents.edit_profile',[
             'user' => $user,
             'agent_types' => $agent_types,
             'cities' => $cities,
+            'services' => $services,
         ]);
     }
 
     // update info
     public function update_info(Request $request)
     {
+        
         $user = Auth::user();
+        $user->services()->sync($request->services);
         $user->update($request->all());
         
         return redirect()->route('agent.edit_profile');

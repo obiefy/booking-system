@@ -8,7 +8,7 @@
                 <h3 class="mb-0">الصالات</h3>
             </div>
             <div class="col text-right">
-                <a href="#!" class="btn btn-sm btn-primary">اضافة صالة جديدة</a>
+                <a href="{{ route('agent.create')}}" class="btn btn-sm btn-primary">اضافة صالة جديدة</a>
             </div>
         </div>
     </div>
@@ -40,9 +40,12 @@
                     @agent_show_city_label(["agent" => $agent])
                     </td>
                     <td>
-                        <a href="" class="btn btn-default btn-sm">تعديل</a>
-                        <a href="" class="btn btn-danger bg-danger btn-sm">حذف</a>
+                        <a  data-toggle="modal"
+                            data-target="#delete-agent-{{ $agent->id }}"
+                            class="btn btn-danger bg-danger btn-sm">حذف</a>
                     </td>
+                    @include('layouts.modal', ["title" => "هل انت متأكد من جذف " . $agent->name , "modal_id" => "delete-agent-".$agent->id,
+"url" => route('agent.destroy', $agent), "method" => "DELETE"]) 
                 </tr>
                 @endforeach
             </tbody>

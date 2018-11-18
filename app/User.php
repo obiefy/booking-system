@@ -31,6 +31,10 @@ class User extends Authenticatable
     public function photos(){
         return $this->hasMany("App\Photo");
     }
+
+    public function services(){
+        return $this->belongsToMany("App\Service");
+    }
     public function prices(){
         return $this->hasMany("App\Price", "agent_id");
     }

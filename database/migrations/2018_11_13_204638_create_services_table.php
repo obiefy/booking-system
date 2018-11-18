@@ -15,6 +15,14 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->timestamps();
+        });
+
+        Schema::create('service_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('service_id');
             $table->timestamps();
         });
     }
@@ -27,5 +35,6 @@ class CreateServicesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('services');
+        Schema::dropIfExists('service_user');
     }
 }

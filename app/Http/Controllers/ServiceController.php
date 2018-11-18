@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
-
+use Auth;
+use Session;
 class ServiceController extends Controller
 {
     /**
@@ -14,7 +15,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('services.index', [
+            'services' => $services,
+        ]);
     }
 
     /**
@@ -35,7 +39,11 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $meal = new Service($request->all());
+        $meal->save();
+
+        Session::flash('success', 'تمت اضافة الخدمة بنجاح');
+        return redirect()->route('service.index');
     }
 
     /**
@@ -69,7 +77,11 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->update($request->all());
+        Session::flash('success', 'تم التعدبل على الخدمة بنجاح');
+        
+
+        return redirect()->route('service.index');
     }
 
     /**
@@ -80,6 +92,10 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        Session::flash('success', 'تمت عملية  الحذف بنجاح');
+        
+
+        return redirect()->route('service.index');
     }
 }

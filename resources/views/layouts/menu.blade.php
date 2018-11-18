@@ -17,6 +17,11 @@
                 </a>
             </li>
             <li class="list-group-item">
+                <a href="{{ route('service.index') }}" class="">
+                    الخدمات
+                </a>
+            </li>
+            <li class="list-group-item">
                 <a href="{{ route('agent.create') }}" class="">
                     s
                 </a>

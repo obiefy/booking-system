@@ -1,4 +1,4 @@
-@extends('layouts.agent_admin_menu') @section('main')
+@extends('layouts.menu') @section('main')
 
 <div class="row">
     <div class="col-md-6">
@@ -7,7 +7,7 @@
                 المعلومات الاساسية
             </div>
             <div class="card-body">
-                <form action="{{ route('agent.update_info') }}" method="POST">
+                <form action="{{ route('agent.store') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -16,7 +16,7 @@
                             type="text"
                             name="name"
                             class="form-control"
-                            value="{{ $user->name }}"
+                            
                         />
                     </div>
 
@@ -26,7 +26,14 @@
                             type="email"
                             name="email"
                             class="form-control"
-                            value="{{ $user->email }}"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="">كلمة المرور</label>
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
                         />
                     </div>
 
@@ -36,7 +43,6 @@
                             type="text"
                             name="phone"
                             class="form-control"
-                            value="{{ $user->phone }}"
                         />
                     </div>
 
@@ -48,8 +54,7 @@
                             class="form-control form-control-alternative"
                         >
                             @foreach($agent_types as $agent_type)
-                            <option value="{{ $agent_type->code }}" {{ $user->agent_type == $agent_type->code ? 'selected' :
-                                '' }}>{{ $agent_type->name }}</option
+                            <option value="{{ $agent_type->code }}" >{{ $agent_type->name }}</option
                             >
                             @endforeach
                         </select>
@@ -62,7 +67,7 @@
                             class="form-control form-control-alternative"
                         >
                             @foreach($cities as $city)
-                            <option value="{{ $city->code }}" {{ $user->city == $city->code ? 'selected' : '' }}>{{ $city->name }}</option
+                            <option value="{{ $city->code }}" >{{ $city->name }}</option
                             >
                             @endforeach
                         </select>
@@ -76,7 +81,6 @@
                             rows="5"
                             class="form-control"
                         >
-                {{ $user->about }}
                 </textarea
                         >
                     </div>
@@ -89,83 +93,23 @@
                             rows="5"
                             class="form-control"
                         >
-                {{ $user->address }}
                 </textarea
                         >
                     </div>
-                                
-                    <div class="form-group">
-                        <label for="" class="label "><strong>الخدمات</strong></label>
-                        <div class="row">
-                            @foreach($services as $service)
-                            <div class="col-md-6">
-                                <input type="checkbox" class="form-check-input" id="services-{{ $service->id }}" value="{{ $service->id }}" name="services[]" {{ $user->services->contains($service->id) ? 'checked' : ''}}>
-                                <label class="form-check-label" for="services-{{ $service->id }}">{{ $service->title }}</label>
 
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="form-check">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <button
                             class="btn btn-default btn-block "
                             type="submit"
                         >
-                            تعديل البيانات
+                        اضافة
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header bg-default text-light">معرض الصور</div>
-            <div class="card-body">
-                <div class="row">
-                    @foreach($user->photos as $photo)
-                    <div class="col-md-6">
-                        <div class="card">
-                            <img
-                                src="{{ route('photo.get', $photo) }}"
-                                alt=""
-                                width="100%"
-                            />
-                            <!-- <div class="card-footer">
-                                {{ $photo->title ?? 'لا يوجد وصف'}}
-                            </div> -->
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="card-footer">
-                <h3>اضافة صورة جديدة</h3>
-                <form
-                    action="{{ route('agent.add_photo') }}"
-                    method="POST"
-                    enctype="multipart/form-data"
-                >
-                    @csrf
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input
-                                type="file"
-                                class="form-control"
-                                id="image"
-                                name="image"
-                            />
-                        </div>
-                    </div>
-                    <button class="btn btn-default btn-block" type="submit">
-                        اضافة الصورة
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 @endsection

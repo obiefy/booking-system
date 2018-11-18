@@ -33,6 +33,9 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     
     // Agents routes
     Route::resource('agent', 'UserController');
+
+    // Services routes
+    Route::resource('service', 'ServiceController');
 });
 
 /*

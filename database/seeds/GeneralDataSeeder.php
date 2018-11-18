@@ -15,6 +15,9 @@ class GeneralDataSeeder extends Seeder
         /* Meal */
         factory(App\Meal::class, 30)->create();
 
+         /* Services */
+         factory(App\Service::class, 30)->create();
+
 
         /* PRICES */
 
@@ -33,6 +36,7 @@ class GeneralDataSeeder extends Seeder
         }
 
         DB::table('prices')->insert($prices);
+
 
 
         
