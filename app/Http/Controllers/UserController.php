@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 use App\User;
 use App\Menu;
+use App\Photo;
 class UserController extends Controller
 {
     /**
@@ -152,5 +154,29 @@ class UserController extends Controller
         $user->update($request->all());
         
         return redirect()->route('agent.edit_profile');
+    }
+
+    public function add_photo(Request $request){
+
+        if ($request->hasFile('image')) {
+
+            $defaultPath = "default.jpeg";
+            $photo = new Photo();
+            $photo->path = $defaultPath;
+            $photo->user_id = Auth::id();
+            $photo->save();
+            $imageName = "image-". Auth::id().'-'. $photo->id .'.'.$request->image->getClientOriginalExtension();
+
+            
+            \Storage::disk('public')->put($imageName,  \File::get($request->file('image')));
+            
+            $photo->path = $imageName;
+            $photo->update();
+            
+            Session::flash('success', 'تمت اضافة الصورة بنجاح');
+
+        }
+
+        return redirect()->route("agent.edit_profile");
     }
 }

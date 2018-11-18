@@ -55,9 +55,18 @@ Route::prefix('agent')->middleware(['agent_admin'])->group(function () {
 
     //  Profile reotues
     Route::get('/profile/edit', 'UserController@edit_profile')->name('agent.edit_profile');
-    Route::get('/profile/update_info', 'UserController@update_info')->name('agent.update_info');
+
+    Route::post('/profile/update_info', 'UserController@update_info')->name('agent.update_info');
+    Route::post('/profile/add_photo', 'UserController@add_photo')->name('agent.add_photo');
+    
 });
 
 
+/*
 
+    PHOTOS ROUTES
+
+*/
+// get photo
+Route::get('/photo/{photo}', 'PhotoController@show')->name('photo.get');
 
