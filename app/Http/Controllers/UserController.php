@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\User;
+use App\Menu;
 class UserController extends Controller
 {
     /**
@@ -87,6 +88,8 @@ class UserController extends Controller
         //
     }
 
+    /* FRONT END FUNCTIONS */
+
     // show search form
     public function search_form(){
         $agents = User::all();
@@ -126,5 +129,28 @@ class UserController extends Controller
         return view('agents.search', [
             "agents" => $result
         ]);
+    }
+
+
+    // show edit form
+    public function edit_profile(){
+        $user = Auth::user();
+
+        $agent_types = Menu::get_menu("agentType")->options;
+        $cities = Menu::get_menu("city")->options;
+        return view('agents.edit_profile',[
+            'user' => $user,
+            'agent_types' => $agent_types,
+            'cities' => $cities,
+        ]);
+    }
+
+    // update info
+    public function update_info(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->all());
+        
+        return redirect()->route('agent.edit_profile');
     }
 }

@@ -55,6 +55,7 @@ Route::prefix('agent')->middleware(['agent_admin'])->group(function () {
 
     //  Profile reotues
     Route::get('/profile/edit', 'UserController@edit_profile')->name('agent.edit_profile');
+    Route::get('/profile/update_info', 'UserController@update_info')->name('agent.update_info');
 });
 
 

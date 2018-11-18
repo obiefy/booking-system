@@ -30,5 +30,44 @@ class MenuSeeder extends Seeder
             'code' => "bofe",
             'menu_id' => $meal_type->id
         ]);
+
+        // Agent types
+        $agent_type  = Menu::create([
+            'name' => "نوع الصالة",
+            'code' => "agentType",
+        ]);
+
+        Option::create([
+            'name' => "صالة",
+            'code' => "hall",
+            'menu_id' => $agent_type->id
+        ]);
+        Option::create([
+            'name' => "قاعة",
+            'code' => "venue",
+            'menu_id' => $agent_type->id
+        ]);
+
+        // City types
+        $city  = Menu::create([
+            'name' => "الولابة",
+            'code' => "city",
+        ]);
+
+        Option::create([
+            'name' => "الخرطوم",
+            'code' => "khartoum",
+            'menu_id' => $city->id
+        ]);
+        Option::create([
+            'name' => "أم درمان",
+            'code' => "omdurman",
+            'menu_id' => $city->id
+        ]);
+        Option::create([
+            'name' => "بحري",
+            'code' => "bahri",
+            'menu_id' => $city->id
+        ]);
     }
 }

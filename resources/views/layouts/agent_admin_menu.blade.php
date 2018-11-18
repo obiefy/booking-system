@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="{{ route('agent.edit_profile', Auth::user()) }}" class="">
+                <a href="{{ route('agent.edit_profile') }}" class="">
                     تعديل البيانات
                 </a>
             </li>
