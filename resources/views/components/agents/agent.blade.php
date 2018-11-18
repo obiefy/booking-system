@@ -1,7 +1,7 @@
 <div class="card">
                         <img
                             class="card-img-top"
-                            src="{{ asset('/img/theme/img-1-1200x1000.jpg') }}"
+                            src="{{ $agent->photos()->count() > 0 ? route('photo.get', $agent->photos[0]) : route('photo.default') }}"
                             alt="Card image cap"
                         />
                         <div class="card-body">
@@ -11,7 +11,9 @@
                             @agent_show_city_label(["agent" => $agent])
                             @agent_show_price_label(["agent" => $agent])
 
-                            
+                            <br>
+                            <br>
+                            @rating()
 
                             <span
                                 class="badge badge-default float-left"
@@ -23,10 +25,7 @@
                             </span>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">حجز</a>
+                            <a href="{{ route('agent.show_profile', $agent) }}" class="btn btn-primary btn-block">عرض</a>
 
-                            <div class="float-left">
-                            @rating()
-                            </div>
                         </div>
                     </div>

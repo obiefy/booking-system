@@ -16,14 +16,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('agent/{user}',"UserController@show");
+
 // Agents search
 Route::get('/agents', "UserController@search_form")->name('agents.show_all');
 Route::post('/agents', "UserController@search")->name('agents.search');
 
+
+// agent profile
+Route::get('agent/{user}',"UserController@show")->name('agent.show_profile');
+
+// Booking Process
+Route::get('agent/{user}/book',"BookingController@create")->name('booking.show_form');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/message', 'MessageController@store')->name('message.store');
+/*
+
+    PHOTOS ROUTES
+
+*/
+// get photo
+Route::get('/photo/{photo}', 'PhotoController@show')->name('photo.get');
+Route::get('/default_photo', 'PhotoController@show_default')->name('photo.default');
+
 
 /*
 
@@ -69,12 +88,5 @@ Route::middleware(['agent_admin'])->group(function () {
     
 });
 
-Route::post('/message', 'MessageController@store')->name('message.store');
-/*
 
-    PHOTOS ROUTES
-
-*/
-// get photo
-Route::get('/photo/{photo}', 'PhotoController@show')->name('photo.get');
 

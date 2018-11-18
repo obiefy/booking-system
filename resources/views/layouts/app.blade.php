@@ -39,6 +39,8 @@
         <link href="{{ asset('css/argon-rtl.css') }}" rel="stylesheet" />
 
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+
+        @yield('style')
     </head>
     <body>
         <div id="app">
@@ -210,5 +212,7 @@
         <script src="{{ asset('js/argon.min.js') }}"></script>
 
         <script src="{{ asset('js/script.js') }}"></script>
+
+        @yield('script')
     </body>
 </html>

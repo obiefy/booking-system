@@ -34,7 +34,7 @@
                         <br>
                         <br>
 
-                        <a href="#" class="btn btn-primary">حجز</a>
+                        <a href="{{ route('booking.show_form', $agent)}}" class="btn btn-primary">حجز</a>
                     </div>
                     <div class="col-md-6">
                         <strong>عن الصالة</strong>

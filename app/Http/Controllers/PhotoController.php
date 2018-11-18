@@ -54,6 +54,13 @@ class PhotoController extends Controller
         }
     }
 
+    public function show_default()
+    {
+        
+            return Storage::get("/public/default.jpg");
+        
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

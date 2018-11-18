@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\User;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -25,9 +26,11 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        return view('booking.create', [
+            'agent' => $user
+        ]);
     }
 
     /**
