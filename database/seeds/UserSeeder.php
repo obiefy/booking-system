@@ -16,13 +16,14 @@ class UserSeeder extends Seeder
         // Admin data
         App\User::create(
             [
-                "name" => "Obay Hamed",
+                "name" => "مدير النظام",
                 "email" => "admin@admin.com",
                 "password" => Hash::make("123456"),
-                "phone" => "0917815544",
+                "phone" => "0999999999",
+                "is_admin" => 1,
                 "agent_type" => "venue",
                 "city" => "omdurman",
-                "about" => "Obay Hamed asd asd asd asd",
+                "about" => "شسي شسي شس asd asd asd asd",
                 "address" => "شارع عبيد ختم",
             ]
         );
@@ -31,10 +32,10 @@ class UserSeeder extends Seeder
                 "name" => "درة بحري",
                 "email" => "agent@agent.com",
                 "password" => Hash::make("123456"),
-                "phone" => "0917815544",
+                "phone" => "Hash",
                 "agent_type" => "venue",
                 "city" => "bahri",
-                "about" => "Obay Hamed asd asd asd asd",
+                "about" => "شسي شسي  asd asd asd asd",
                 "address" => "شارع  أفريقيا",
             ]
         );

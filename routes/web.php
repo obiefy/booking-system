@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
     SUPER ADMIN ROUTES
 
 */
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['admin'])->group(function () {
     
     // Agents routes
     Route::resource('agent', 'UserController');
@@ -41,7 +41,7 @@ AGENT ADMIN ROUTES
 
 */
 
-Route::prefix('agent')->group(function () {
+Route::prefix('agent')->middleware(['agent_admin'])->group(function () {
     
     // Booking routes
     Route::get('bookings', 'BookingController@index')->name('booking.index');
@@ -51,6 +51,10 @@ Route::prefix('agent')->group(function () {
 
      // Meals routes
      Route::resource('meal', 'MealController');
+
+
+    //  Profile reotues
+    Route::get('/profile/edit', 'UserController@edit_profile')->name('agent.edit_profile');
 });
 
 

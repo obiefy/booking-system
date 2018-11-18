@@ -17,6 +17,16 @@
                 </a>
             </li>
             <li class="list-group-item">
+                <a href="{{ route('meal.index') }}" class="">
+                    الوجبات
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('agent.edit_profile', Auth::user()) }}" class="">
+                    تعديل البيانات
+                </a>
+            </li>
+            <li class="list-group-item">
                 <a href="{{ route('agent.create') }}" class="">
                     s
                 </a>

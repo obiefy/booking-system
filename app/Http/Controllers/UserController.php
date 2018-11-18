@@ -45,10 +45,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Booking  $booking
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(User $user)
     {
         //
     }
@@ -56,22 +56,22 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Booking  $booking
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit(User $user)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Booking  $booking
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -79,10 +79,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Booking  $booking
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy(User $user)
     {
         //
     }
