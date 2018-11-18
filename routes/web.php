@@ -37,6 +37,9 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
     // Services routes
     Route::resource('service', 'ServiceController');
+
+    // messages
+    Route::get('/messages', 'MessageController@index')->name('message.index');
 });
 
 /*
@@ -66,7 +69,7 @@ Route::middleware(['agent_admin'])->group(function () {
     
 });
 
-
+Route::post('/message', 'MessageController@store')->name('message.store');
 /*
 
     PHOTOS ROUTES

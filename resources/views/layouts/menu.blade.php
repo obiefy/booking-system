@@ -22,6 +22,12 @@
                 </a>
             </li>
             <li class="list-group-item">
+                <a href="{{ route('message.index') }}" class="">
+                    الرسائل
+                </a>
+            </li>
+
+            <li class="list-group-item">
                 <a href="{{ route('agent.create') }}" class="">
                     s
                 </a>

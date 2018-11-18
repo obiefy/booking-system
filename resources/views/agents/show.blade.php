@@ -16,9 +16,21 @@
                         @agent_show_type_label(["agent" => $agent])
                         @agent_show_city_label(["agent" => $agent])
                         @agent_show_price_label(["agent" => $agent])
-                        <br>
-                        <br>
                         @rating()
+                        <br>
+                        <br>
+                        <strong>الخدمات</strong>
+                        <br>
+                        @if($agent->services()->count() > 0)
+                            @foreach($agent->services as $service)
+                            <span class="badge badge-dark">{{ $service->title }}</span>
+                            @endforeach
+                        @else   
+
+                            <div class="alert alert-light">
+                                لا توجد خدمات اضافية
+                            </div>
+                        @endif
                         <br>
                         <br>
 

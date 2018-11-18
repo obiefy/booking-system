@@ -314,10 +314,9 @@
             <div class="col-lg-8">
                 <div class="card bg-gradient-secondary shadow">
                     <div class="card-body p-lg-5">
-                        <h4 class="mb-1">Want to work with us?</h4>
-                        <p class="mt-0">
-                            Your project is very important to us.
-                        </p>
+                        <h4 class="mb-1">يمكنك التواصل معنا </h4>
+                        <form action="{{ route('message.store') }}" method="POST">
+                        @csrf
                         <div class="form-group mt-5">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
@@ -327,8 +326,10 @@
                                 </div>
                                 <input
                                     class="form-control"
-                                    placeholder="Your name"
+                                    placeholder="اسمك"
                                     type="text"
+                                    name="name"
+                                    required
                                 />
                             </div>
                         </div>
@@ -341,28 +342,33 @@
                                 </div>
                                 <input
                                     class="form-control"
-                                    placeholder="Email address"
+                                    placeholder="البريد الالكتروني"
                                     type="email"
+                                    name="email"
+                                    required
                                 />
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <textarea
                                 class="form-control form-control-alternative"
-                                name="name"
+                                name="message"
                                 rows="4"
                                 cols="80"
-                                placeholder="Type a message..."
+                                placeholder="محتوى الرسالة"
+                                required
                             ></textarea>
                         </div>
                         <div>
                             <button
-                                type="button"
+                                type="submit"
                                 class="btn btn-default btn-round btn-block btn-lg"
                             >
-                                Send Message
+                            ارسال
                             </button>
                         </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
