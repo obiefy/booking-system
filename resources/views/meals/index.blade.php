@@ -24,6 +24,7 @@
                     <th scope="col">الرقم</th>
                     <th scope="col">الوجبة</th>
                     <th scope="col">السعر</th>
+                    <th scope="col">الخصم</th>
                     <th scope="col">نوعها</th>
                     <th scope="col">العمليات</th>
                 </tr>
@@ -34,6 +35,7 @@
                     <td>{{ $meal->id }}</td>
                     <td>{{ $meal->title }}</td>
                     <td>{{ $meal->price }}</td>
+                    <td>{{ $meal->discount }}</td>
                     <td>{{ App\Option::get_name($meal->type) }}</td>
 
                     <td>

@@ -39,4 +39,15 @@
         value="{{ $meal->price }}"
     />
 </div>
+
+<div class="form-group">
+    <label for="" class="label">الخصم</label>
+    <input
+        type="number"
+        class="form-control form-control-alternative"
+        name="discount"
+        required
+        value="{{ $meal->discount }}"
+    />
+</div>
 @endsection

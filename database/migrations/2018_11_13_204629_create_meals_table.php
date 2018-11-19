@@ -20,6 +20,7 @@ class CreateMealsTable extends Migration
             $table->string('type');
             $table->text('content');
             $table->double('price');
+            $table->double('discount')->default(0);
             $table->timestamps();
         });
     }
