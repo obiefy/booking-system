@@ -1,5 +1,5 @@
-.bg-gray {
-    background-color: lightgray;
+.bg-gray .bg-grey {
+    background-color: lightgray !important;
 }
 
 .badge {

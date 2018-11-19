@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Booking;
 use App\User;
+use App\Menu;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -28,8 +29,18 @@ class BookingController extends Controller
      */
     public function create(User $user)
     {
+        $meal_types = Menu::get_menu("mealType")->options;
+        
+        $meals = $user->meals;
+        $cocktail = $meals->where('type', "cocktail");
+        $buffet = $meals->where('type', "buffet");
+        
         return view('booking.create', [
-            'agent' => $user
+            'agent' => $user,
+            'meals' => $meals,
+            'cocktail' => $cocktail,
+            'buffet' => $buffet,
+            'meal_types' => $meal_types,
         ]);
     }
 

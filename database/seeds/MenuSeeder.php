@@ -27,7 +27,7 @@ class MenuSeeder extends Seeder
         ]);
         Option::create([
             'name' => "بوفيه",
-            'code' => "bofe",
+            'code' => "buffet",
             'menu_id' => $meal_type->id
         ]);
 

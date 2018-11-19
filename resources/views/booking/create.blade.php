@@ -14,10 +14,33 @@
 		<div class="container-fluid col-md-6 col-md-offset-3">
 
 <!-- MultiStep Form -->
-<form id="regForm" action="/submit_page.php">
+<form id="regForm" action="/submit_page.php" class="bg-grey">
   <h1>حجز {{ $agent->name }}</h1>
   <!-- One "tab" for each step in the form: -->
   
+  <!-- Meal Info -->
+    <div class="tab">
+    <label for=""><strong>الوجبات</strong></label>
+    <div class="row">
+      
+    @foreach($meals as $meal)
+      <div class="col-md-4">
+          <div class="card p-2 bg-dsark text-ligsht">
+        <label for="meal-{{ $meal->id }}">
+            <input type="radio" name="meal" id="meal-{{ $meal->id }}">
+            {{ $meal->title }}
+            <br>
+            <span class="text-center badge {{ $meal->type == 'cocktail' ? 'badge-warning' : 'badge-info' }}">{{ App\Option::get_name($meal->type) }}</span>
+            
+        </label>
+          </div>
+      </div>
+    @endforeach
+    </div>
+  </div>
+
+
+  <!-- General Info -->
   <div class="tab">
     <div class="form-group">
         <label for=""> الاسم رباعي</label>
@@ -25,7 +48,7 @@
             type="text"
             name="name"
             class="form-control"
-            
+            value="Obay"
         />
     </div>
     <div class="form-group">
@@ -34,7 +57,7 @@
             type="text"
             name="name"
             class="form-control"
-            
+            value="Obay"
         />
     </div>
     <div class="form-group">
@@ -43,7 +66,7 @@
             type="text"
             name="name"
             class="form-control"
-            
+            value="Obay"
         />
     </div>
     <div class="form-group">
@@ -52,14 +75,11 @@
             type="text"
             name="name"
             class="form-control"
-            
+            value="Obay"
         />
     </div>
   </div>
-  <div class="tab">Contact Info:
-    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-  </div>
+  
   <div class="tab">Birthday:
     <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
     <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
