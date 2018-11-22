@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\User;
 use App\Menu;
+use App\Meal;
+use App\Review;
+use Auth;
+use Session;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -16,8 +20,39 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Auth::user()->get_bookings;
         return view('booking.index', [
+            'bookings' => $bookings
+        ]);
+    }
+
+    public function complete()
+    {
+        $bookings = Auth::user()->get_bookings->where('status', 1);
+        return view('booking.index', [
+            'bookings' => $bookings
+        ]);
+    }
+
+
+    public function requested()
+    {
+        $bookings = Auth::user()->get_bookings->where('status', 0);
+        return view('booking.index', [
+            'bookings' => $bookings
+        ]);
+    }
+
+
+    public function calendar()
+    {
+        $bookings = Auth::user()->get_bookings;
+        // $bookings = Booking::all();
+        
+
+
+        
+        return view('booking.calendar', [
             'bookings' => $bookings
         ]);
     }
@@ -29,18 +64,9 @@ class BookingController extends Controller
      */
     public function create(User $user)
     {
-        $meal_types = Menu::get_menu("mealType")->options;
         
-        $meals = $user->meals;
-        $cocktail = $meals->where('type', "cocktail");
-        $buffet = $meals->where('type', "buffet");
-        
-        return view('booking.create', [
+        return view('booking.booking', [
             'agent' => $user,
-            'meals' => $meals,
-            'cocktail' => $cocktail,
-            'buffet' => $buffet,
-            'meal_types' => $meal_types,
         ]);
     }
 
@@ -50,6 +76,112 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store_info(Request $request, User $user)
+    {
+        $this->validate($request, [
+            
+            'first_name' => 'required',
+            'second_name' => 'required',
+            'third_name' => 'required',
+            'fourth_name' => 'required',
+            'ssn' => 'required|size:11',
+            'phone' => 'required|size:10',
+            'email' => 'email',
+        ]);
+        $booking  = new Booking($request->all());
+
+        $booking->agent_id = $user->id;
+        $booking->steps = "info";
+        $booking->save();
+        
+        $meal_types = Menu::get_menu("mealType")->options;
+        
+        $meals = $user->meals;
+        $cocktail = $meals->where('type', "cocktail");
+        $buffet = $meals->where('type', "buffet");
+        
+        return view('booking.booking', [
+            'booking' => $booking,
+            'agent' => $user,
+            'meals' => $meals,
+            'cocktail' => $cocktail,
+            'buffet' => $buffet,
+            'meal_types' => $meal_types,
+        ]);
+
+
+    }
+
+    public function store_meal(Request $request, Booking $booking)
+    {
+        $this->validate($request, [
+            
+            'meal' => 'required'
+        ]);
+        
+        
+        $booking->steps = "meal";
+        $booking->meal_id = $request->meal;
+
+        $agent_price = $booking->agent->get_price() ?? 0;
+        $meal_price = Meal::find($request->meal)->price ?? 0;
+
+        $meal_price = $meal_price * $request->number;
+
+        $total = $agent_price + $meal_price;
+
+        $booking->total = $total;
+        $booking->save();
+        
+        
+        return view('booking.booking', [
+            'booking' => $booking,
+            'agent' => $booking->agent,
+        ]);
+
+
+    }
+
+    public function store_payment(Request $request, Booking $booking)
+    {
+        // $this->validate($request, [
+        //     'card' => 'required|size:6',
+        //     'expired' => 'required',
+        // ]);
+        
+        // return redirect()->route('booking.store.payment', $booking);
+        
+        $booking->steps = "payment";
+        $booking->save();
+        
+        
+        return view('booking.booking', [
+            'booking' => $booking,
+            'agent' => $booking->agent,
+        ]);
+
+
+    }
+
+    public function store_review(Request $request, Booking $booking)
+    {
+        $review = new Review();
+        $review->rating = $request->rating;
+        $review->review = $request->review;
+        $review->user_id = $booking->agent->id;
+        $review->booking_id = $booking->id;
+        $review->review = $request->review;
+        $review->name = $booking->name();
+        $review->save();
+        
+        Session::flash('success', 'تم تسجيل تقييمك بنجاح');
+        
+
+        return redirect()->route('agent.show_profile',$booking->agent);
+
+
+    }
+
     public function store(Request $request)
     {
         //

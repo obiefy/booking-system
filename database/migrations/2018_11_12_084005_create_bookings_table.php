@@ -15,15 +15,37 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
+
+            // general data
             $table->integer('agent_id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('second_name');
+            $table->string('third_name');
+            $table->string('fourth_name');
+            
             $table->string('ssn');
             $table->string('phone');
             $table->string('email')->nullable();
-            $table->date('from')->nullable();
-            $table->date('to')->nullable();
+        
+            // booking data
+            $table->date('date')->nullable();
+            $table->time('from')->nullable();
+            $table->time('to')->nullable();
+            $table->string('period')->nullable();
+            
+            // meal ID
+            $table->integer('meal_id')->nullable();
 
-            $table->integer('total_price')->nullable();
+            
+            // payment data
+            $table->string('payment_type')->nullable();
+            $table->integer('bank_id')->nullable();
+
+            // status
+            $table->integer('status')->default(0);
+            // steps
+            $table->string('steps')->default("info");
+            $table->integer('total')->nullable();
             
             
             $table->timestamps();

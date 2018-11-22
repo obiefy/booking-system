@@ -18,67 +18,10 @@
   <h1>حجز {{ $agent->name }}</h1>
   <!-- One "tab" for each step in the form: -->
   
-  <!-- Meal Info -->
-    <div class="tab">
-    <label for=""><strong>الوجبات</strong></label>
-    <div class="row">
-      
-    @foreach($meals as $meal)
-      <div class="col-md-4">
-          <div class="card p-2 bg-dsark text-ligsht">
-        <label for="meal-{{ $meal->id }}">
-            <input type="radio" name="meal" id="meal-{{ $meal->id }}">
-            {{ $meal->title }}
-            <br>
-            <span class="text-center badge {{ $meal->type == 'cocktail' ? 'badge-warning' : 'badge-info' }}">{{ App\Option::get_name($meal->type) }}</span>
-            
-        </label>
-          </div>
-      </div>
-    @endforeach
-    </div>
-  </div>
 
 
-  <!-- General Info -->
-  <div class="tab">
-    <div class="form-group">
-        <label for=""> الاسم رباعي</label>
-        <input
-            type="text"
-            name="name"
-            class="form-control"
-            value="Obay"
-        />
-    </div>
-    <div class="form-group">
-        <label for="">رقم التلفون</label>
-        <input
-            type="text"
-            name="name"
-            class="form-control"
-            value="Obay"
-        />
-    </div>
-    <div class="form-group">
-        <label for="">الرقم الوطني</label>
-        <input
-            type="text"
-            name="name"
-            class="form-control"
-            value="Obay"
-        />
-    </div>
-    <div class="form-group">
-        <label for=""> البريد الالكتروني</label>
-        <input
-            type="text"
-            name="name"
-            class="form-control"
-            value="Obay"
-        />
-    </div>
-  </div>
+
+
   
   <div class="tab">Birthday:
     <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>

@@ -12,6 +12,16 @@
                 </a>
             </li>
             <li class="list-group-item">
+                <a href="{{ route('booking.complete') }}" class="">
+                الحجوزات المكتملة
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('booking.requested') }}" class="">
+                الحجوزات الغير مكتملة
+                </a>
+            </li>
+            <li class="list-group-item">
                 <a href="{{ route('price.index') }}" class="">
                     الأسعار
                 </a>
@@ -26,9 +36,10 @@
                     تعديل البيانات
                 </a>
             </li>
+
             <li class="list-group-item">
-                <a href="{{ route('agent.create') }}" class="">
-                    s
+                <a href="{{ route('agent.calendar') }}" class="">
+                    عرض التقويم
                 </a>
             </li>
         </ul>

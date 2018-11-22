@@ -36,7 +36,9 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/argon.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/argon-rtl.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/argon-rtl.css') }}" rel="stylesheet" />
+            <!-- Fullcalendar -->
+            <link href="{{ asset('css/fullcalendar.min.css') }}" rel="stylesheet" />
 
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
@@ -115,19 +117,17 @@
                                     >
                                         لوحة التحكم
                                     </a>
+                                    
 
-                                    @else
-
+                                    @endif
 
                                     <a
                                         class="dropdown-item"
                                         href="{{ route('booking.index') }}"
                                     >
-                                        لوحة التحكم
+                                        ادارة الصالة
                                     </a>
 
-
-                                    @endif
                                     <a
                                         class="dropdown-item"
                                         href="{{ route('logout') }}"
@@ -159,6 +159,15 @@
                     <p class="alert alert-success">{{ Session::get('success') }}</p>
                     @endif
 
+                    @if($errors->any())
+                        <div class="alert alert-danger" >
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     </div>  
 
                 @yield('content')</div>

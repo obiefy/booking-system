@@ -1,46 +1,20 @@
-@extends('layouts.app') @section('content')
-
-<div class="container pt-5 pb-5">
-    
-    <div class="row">
+<template>
+    <div>
+        <div class="row">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    البحث عن القاعات @if(!empty($agents))
+                    البحث عن القاعات 
                     <span class="pull-left">
-                        ( {{$agents->count()}} ) نتيجة
+                        (  ) نتيجة
                     </span>
-                    @endif
                 </div>
                 <div class="card-body">
-                <form action="{{ route('agents.search_name') }}" method="post">
+                    <form action="" method="post">
                         @csrf
                         <div class="form-group">
-                            <input
-                                type="text"
-                                name="name"
-                                class="form-control"
-                                placeholder="اسم الصالة",
-                                required
-                            />
-                        </div>
-                        <div class="form-group">
-                            <button
-                                type="submit"
-                                class="btn btn-primary btn-block"
-                            >
-                                بحث
-                            </button>
-                        </div>
-                </form>
-                </div>
-                <div class="card-body">
-                    <h3>بحث متقدم</h3>
-                    <br>
-                    <form action="{{ route('agents.search') }}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <select name="city" class="form-control" required>
+                            <select name="city" class="form-control">
+                                <option value="">المدينة</option>
                                 <option value="khartoum">الخرطوم</option>
                                 <option value="omdurman">أمدرمان</option>
                                 <option value="bahri">بحري</option>
@@ -49,10 +23,9 @@
                         <div class="form-group">
                             <input
                                 type="text"
-                                name="address"
+                                name="name"
                                 class="form-control"
-                                placeholder="الوصف"
-                                required
+                                placeholder="الخرطوم ، امدرمان .."
                             />
                         </div>
                         <div class="form-group">
@@ -118,7 +91,34 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">@agents(["agents" => $agents])</div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4" v-for="agent in agents" :key="agent.id">
+                    <show-agent :agent="agent"></show-agent>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-@endsection
+    </div>
+</template>
+
+<script>
+import searchAgent from "./agents/agent";
+export default {
+  props: ["agents"],
+  components: {
+    "show-agent": searchAgent
+  },
+  created() {
+    this.search();
+  },
+  methods: {
+    search() {
+      this.agents = this.agents.filter(function(agent) {
+        return agent.city === "khartoum";
+      });
+    }
+  }
+};
+</script>
+

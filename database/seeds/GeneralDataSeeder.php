@@ -38,6 +38,25 @@ class GeneralDataSeeder extends Seeder
         DB::table('prices')->insert($prices);
 
 
+        /* Bank */
+
+        // Bank seeder
+        $length = 0;
+        $banks = [];
+        while($length != 10){
+            $bank = [
+                'name' => str_random(10),
+                'number' => rand(1,10),
+                'expired_at' => Carbon::now(),
+                'credit' => rand(1000,100000),
+            ];
+            array_push($banks, $bank);
+            $length++;
+        }
+
+        DB::table('banks')->insert($banks);
+
+
 
         
     }

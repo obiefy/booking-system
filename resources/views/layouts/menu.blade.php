@@ -27,11 +27,7 @@
                 </a>
             </li>
 
-            <li class="list-group-item">
-                <a href="{{ route('agent.create') }}" class="">
-                    s
-                </a>
-            </li>
+            
         </ul>
 
     </div>

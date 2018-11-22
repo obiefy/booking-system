@@ -46,33 +46,65 @@
                 </div>
             </div>
 
-            <h3>معرض الصور</h3>
-            <br>
-            @if($agent->photos()->count() > 0)
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach($agent->photos as $photo)
-                    <div class="carousel-item {{ $loop->first ? 'active' : ''}}">
-                        <img class="d-block w-100" src="{{ route('photo.get', $photo) }}" alt="First slide">
+            <div class="card-footer">
+                <h3>معرض الصور</h3>
+                <br>
+                @if($agent->photos()->count() > 0)
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($agent->photos as $photo)
+                        <div class="carousel-item {{ $loop->first ? 'active' : ''}}">
+                            <img class="d-block w-100" src="{{ route('photo.get', $photo) }}" alt="First slide">
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            @else   
+                @else   
 
-            <div class="alert alert-warning">
-                لا توجد صور لعرضها
+                <div class="alert alert-warning">
+                    لا توجد صور لعرضها
+                </div>
+                @endif
+                
+
             </div>
-            @endif
-            
+
+            <div class="card-footer">
+            <h3>التقييمات</h3>
+                <br>
+                @if($agent->reviews()->count() > 0)
+                    @foreach($agent->reviews as $review)
+                        <div class="card bg-grey">
+                            <div class="card-body">
+                                <p><strong>{{ $review->name }}</strong></p>
+                                <p>{{ $review->review }}</p>
+                            </div>
+                            <div class="card-footer">
+                                
+                            <p>
+                                التقييم
+                                
+                                <strong>({{ $review->rating }})</strong>
+                            </p>
+                            </div>
+                        </div>
+                    @endforeach
+                
+                @else   
+
+                <div class="alert alert-warning">
+                    لا توجد تقيمم لعرضها
+                </div>
+                @endif
+            </div>
         </div>
         </div>
         <div class="col-md-4">

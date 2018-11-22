@@ -19,7 +19,10 @@ Route::get('/', function () {
 
 // Agents search
 Route::get('/agents', "UserController@search_form")->name('agents.show_all');
+
 Route::post('/agents', "UserController@search")->name('agents.search');
+Route::post('/agents_search_name', "UserController@agents_search_name")->name('agents.search_name');
+
 
 
 // agent profile
@@ -27,6 +30,15 @@ Route::get('agent/{user}',"UserController@show")->name('agent.show_profile');
 
 // Booking Process
 Route::get('agent/{user}/book',"BookingController@create")->name('booking.show_form');
+// Booking info
+Route::post('/agent/{user}/book', "BookingController@store_info")->name('booking.store.info');
+// Booking meal
+Route::post('booking/{booking}/meal', "BookingController@store_meal")->name('booking.store.meal');
+// Booking payment
+Route::post('booking/{booking}/payment', "BookingController@store_payment")->name('booking.store.payment');
+
+// Rating and review
+Route::post('booking/{booking}/review', "BookingController@store_review")->name('booking.store.review');
 
 
 Auth::routes();
@@ -72,6 +84,10 @@ Route::middleware(['agent_admin'])->group(function () {
     
     // Booking routes
     Route::get('bookings', 'BookingController@index')->name('booking.index');
+    // Booking routes
+    Route::get('bookings/complete', 'BookingController@complete')->name('booking.complete');
+    // Booking routes
+    Route::get('bookings/requested', 'BookingController@requested')->name('booking.requested');
 
     // Prices routes
     Route::resource('price', 'PriceController');
@@ -82,6 +98,9 @@ Route::middleware(['agent_admin'])->group(function () {
 
     //  Profile reotues
     Route::get('/profile/edit', 'UserController@edit_profile')->name('agent.edit_profile');
+
+    //  Show Calendar
+    Route::get('/calendar', 'BookingController@calendar')->name('agent.calendar');
 
     Route::post('/profile/update_info', 'UserController@update_info')->name('agent.update_info');
     Route::post('/profile/add_photo', 'UserController@add_photo')->name('agent.add_photo');

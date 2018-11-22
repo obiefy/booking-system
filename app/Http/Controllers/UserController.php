@@ -113,8 +113,25 @@ class UserController extends Controller
         ]);
     }
 
+    // show search by name
+    public function agents_search_name(Request $request){
+        $agents = User::name($request->name)->get();
+        return view('agents.search', [
+            "agents" => $agents
+        ]);
+    }
+
     // search
     public function search(Request $request){
+
+        $agents = User::filter($request->all());
+
+        return response()->json([
+            "agents_count" => count($agents),
+            "agents" => $agents,
+        ],200);
+
+
         // address result
         $city_result = User::where([
             "city" => $request->city
