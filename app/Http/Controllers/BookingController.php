@@ -7,6 +7,7 @@ use App\User;
 use App\Menu;
 use App\Meal;
 use App\Review;
+use App\Bank;
 use Auth;
 use Session;
 use Illuminate\Http\Request;
@@ -157,6 +158,22 @@ class BookingController extends Controller
         $booking->save();
         
         
+        return redirect()->route('booking.store.payment_form',$booking);
+
+
+    }
+
+    public function show_payment(Booking $booking)
+    {
+        // $this->validate($request, [
+        //     'card' => 'required|size:6',
+        //     'expired' => 'required',
+        // ]);
+        
+        // return redirect()->route('booking.store.payment', $booking);
+        
+        
+        
         return view('booking.booking', [
             'booking' => $booking,
             'agent' => $booking->agent,
@@ -167,12 +184,30 @@ class BookingController extends Controller
 
     public function store_payment(Request $request, Booking $booking)
     {
-        // $this->validate($request, [
-        //     'card' => 'required|size:6',
-        //     'expired' => 'required',
-        // ]);
+        if($request->payment == "bank"){
+            $this->validate($request, [
+                'card' => 'required|size:6'
+            ]);
+
+            $account = Bank::where("number", $request->card)->first();
+            if($account){
+                
+                if($account->credit < $booking->total){
+                    Session::flash('danger', 'لا يوجدج رصيد كافي في حسابك');
+                    return redirect()->back();
+                }
+            }else{
+                Session::flash('danger', 'لم يتم العثور على بطاقتك');
+                return redirect()->back();
+            }
+            
+            $booking->payment_type = "cash";
+            $booking->bank_id = $account->id;
+            $booking->status = 1;
+            $account->credit = $account->credit - $booking->total;
+            $account->update();
+        }
         
-        // return redirect()->route('booking.store.payment', $booking);
         
         $booking->steps = "payment";
         $booking->save();

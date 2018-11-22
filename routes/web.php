@@ -38,6 +38,7 @@ Route::post('/agent/{user}/book', "BookingController@store_info")->name('booking
 // Booking meal
 Route::post('booking/{booking}/meal', "BookingController@store_meal")->name('booking.store.meal');
 // Booking payment
+Route::get('booking/{booking}/payment', "BookingController@show_payment")->name('booking.store.payment_form');
 Route::post('booking/{booking}/payment', "BookingController@store_payment")->name('booking.store.payment');
 
 // Rating and review

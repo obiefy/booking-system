@@ -1,4 +1,5 @@
   <!-- Meal Info -->
+
   <form action="{{ route('booking.store.payment', $booking) }}" method="POST">
       @csrf
   <div class="tab">
@@ -8,12 +9,12 @@
     <label for=""><strong>طريقة الدفع</strong></label>
         <div class="form-group">
         
-            <input type="radio" name="payment" id="cash" checked>
+            <input type="radio" name="payment" id="cash" value="cash" checked>
             <label for="cash">دفع كاش</label>
         </div>
 
         <div class="form-group">
-            <input type="radio" name="payment" id="bank">
+            <input type="radio" name="payment" id="bank"  value="bank">
             <label for="bank">دفع بالبطاقة</label>
         
         </div>
@@ -29,14 +30,14 @@
                     
                 />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">تاريخ الانتهاء</label>
                 <input
                     type="date"
                     name="expired"
                     class="form-control"    
                 />
-            </div>
+            </div> -->
         </div>
 
     <div class="form-group">
