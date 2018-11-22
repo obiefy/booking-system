@@ -13,7 +13,10 @@
 
 // VISITORS ROUTES
 Route::get('/', function () {
-    return view('welcome');
+    $agents = App\User::all()->take(6);
+    return view('welcome',[
+        "agents" => $agents
+    ]);
 });
 
 
