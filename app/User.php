@@ -68,6 +68,10 @@ class User extends Authenticatable
         $price = $this->prices()->orderBy('price', "DESC")->first();
         return $price->price;
     }
+    public function get_price_object(){
+        $price = $this->prices()->orderBy('price', "DESC")->first();
+        return $price;
+    }
 
     public function meals(){
         return $this->hasMany("App\Meal", "agent_id");
@@ -86,7 +90,7 @@ class User extends Authenticatable
             $agents = $agents->merge($this::name($fields['name'])->get());
         }
         
-        $agents = $this->all();
+        $agents = $this->whereHas("prices")->get();
         // using type
         if(!empty($fields['agent_type'])){
 
@@ -123,11 +127,19 @@ class User extends Authenticatable
         }
         
         if(!empty($fields['price'])){
-
-            $prices = Price::where('price', '<=', $fields['price']);
-
+            
+            $prices = Price::where('price', '<=', $fields['price'])->get();
+            
+            
+            // dd("here",$prices);  
             foreach ($prices as $price) {
-                $agents = $agents->where('id', "!=", $price->agent_id);
+                $agents = $agents->filter(function($agent) use ( $prices) {
+                    // dd($prices);
+
+                    if($prices->contains($agent->get_price_object())){
+                        return $agent;
+                    }
+                });
             }
 
         }
