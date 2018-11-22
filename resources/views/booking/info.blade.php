@@ -75,7 +75,16 @@
         <label for=""> البريد الالكتروني</label>
         <input
             type="email"
-            name="name"
+            name="email"
+            class="form-control"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for=""> ريخ الحجز</label>
+        <input
+            type="date"
+            name="date"
             class="form-control"
         />
     </div>

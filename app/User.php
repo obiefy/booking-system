@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use \Illuminate\Support\Collection;
 
+use App\Booking;
+use App\Price;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -78,63 +80,56 @@ class User extends Authenticatable
         // $type_results = new Collection();
         // $name_results = new Collection();
         // $city_results = new Collection();
-        $agents = new Collection();
-
-
-        // using type
-        if(!empty($fields['type'])){
-            $agents = $agents->merge($this::type($fields['type'])->get());
-        }
         
         // using name
         if(!empty($fields['name'])){
             $agents = $agents->merge($this::name($fields['name'])->get());
         }
+        
+        $agents = $this->all();
+        // using type
+        if(!empty($fields['agent_type'])){
+
+            $agents = $agents->where('agent_type',$fields['agent_type']);
+        }
+        
 
         // using city
         if(!empty($fields['city'])){
-            $agents = $agents->merge($this::city($fields['city'])->get());
+            $agents = $agents->where("city", $fields['city']);
+            
         }
     
         // using address
         if(!empty($fields['address'])){
-            $agents = $agents->merge($this::address($fields['address'])->get());
+            $agents = $agents->where("address", $fields['address']);
         }
 
 
         // using services
         if(!empty($fields['services'])){
-            
-            $agents = $agents->merge($this::hasServices($fields['services'])->get());
+            $agents = $agents->where("address", $fields['address']);
+
+            // $agents = $agents->merge($this::hasServices($fields['services'])->get());
         }
 
-        // using price
-        if(!empty($fields['price'])){
-            
-            $agents = $agents->merge($this::price($fields['price'])->get());
+        if(!empty($fields['date'])){
+
+            $bookings = Booking::where("date", $fields['date'])->get();
+
+            foreach ($bookings as $booking) {
+                $agents = $agents->where('id', "!=", $booking->agent_id);
+            }
         }
-
-        // $agents = array_merge($type_results->toArray(), $name_results->toArray());
-        $agents = $agents->unique();
-
-
-
-        // Result 
-        $agents = $this::type($fields['type'])
-            ->city($fields['city'])
-            
-            ->price($fields['price']);
-
-        // using services
-        if(!empty($fields['services'])){
-            $agents = $agents->get()->filter(function($agent) use ($fields){
-                foreach ($fields['services'] as $service) {
-                    if(in_array(1, $fields['services'])){
-                        return $agent;
-                    }
-                }
-            });
         
+        if(!empty($fields['price'])){
+
+            $prices = Price::where('price', '<=', $fields['price']);
+
+            foreach ($prices as $price) {
+                $agents = $agents->where('id', "!=", $price->agent_id);
+            }
+
         }
         
         return $agents;

@@ -126,10 +126,10 @@ class UserController extends Controller
 
         $agents = User::filter($request->all());
 
-        return response()->json([
-            "agents_count" => count($agents),
-            "agents" => $agents,
-        ],200);
+        // return response()->json([
+        //     "agents_count" => count($agents),
+        //     "agents" => $agents,
+        // ],200);
 
 
         // address result
@@ -159,7 +159,8 @@ class UserController extends Controller
         $result = $result->unique();
 
         return view('agents.search', [
-            "agents" => $result
+            "agents_count" => count($agents),
+            "agents" => $agents,
         ]);
     }
 

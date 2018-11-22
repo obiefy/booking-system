@@ -27,6 +27,13 @@
                 </a>
             </li>
 
+            <li class="list-group-item">
+                <a href="{{ route('booking.index_admin') }}" class="">
+                    الحجوزات
+                </a>
+            </li>
+
+
             
         </ul>
 

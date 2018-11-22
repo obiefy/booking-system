@@ -18,6 +18,29 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_admin()
+    {
+        $bookings = Booking::all();
+        $agents = User::all();
+        return view('booking.index_admin', [
+            'bookings' => $bookings,
+            'agents' => $agents,
+        ]);
+    }
+
+    public function filter(Request $request)
+    {
+
+        $bookings = Booking::where('agent_id', $request->agent)
+            ->whereBetween("date", array($request->year."-".$request->month."-1", $request->year."-".$request->month."-30"))
+            ->get();
+        $agents = User::all();
+        return view('booking.index_admin', [
+            'bookings' => $bookings,
+            'agents' => $agents,
+        ]);
+    }
+
     public function index()
     {
         $bookings = Auth::user()->get_bookings;
@@ -86,7 +109,7 @@ class BookingController extends Controller
             'fourth_name' => 'required',
             'ssn' => 'required|size:11',
             'phone' => 'required|size:10',
-            'email' => 'email',
+            'date' => 'required',
         ]);
         $booking  = new Booking($request->all());
 

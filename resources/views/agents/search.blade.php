@@ -52,9 +52,20 @@
                                 name="address"
                                 class="form-control"
                                 placeholder="الوصف"
-                                required
                             />
                         </div>
+                        <div class="form-group">
+                                <label>التاريخ</label
+                                    >
+                                <input
+                                    type="date"
+                                    name="date"
+                                    class="form-control"
+                                    placeholder="من"
+                                    
+                                />
+                            </div>
+
                         <div class="form-group">
                             <div
                                 class="custom-control custom-radio custom-control-inline"
@@ -65,6 +76,7 @@
                                     name="agent_type"
                                     class="custom-control-input"
                                     value="hall"
+                                    checked
                                 />
                                 <label
                                     class="custom-control-label"
@@ -78,18 +90,88 @@
                             >
                                 <input
                                     type="radio"
-                                    id="conference-control"
+                                    id="venue-control"
                                     name="agent_type"
                                     class="custom-control-input"
                                     value="venue"
                                 />
                                 <label
                                     class="custom-control-label"
-                                    for="conference-control"
+                                    for="venue-control"
                                     >قاعة مؤتمرات</label
                                 >
                             </div>
                         </div>
+
+                        <div id="hall-section">
+                        
+
+                            <div class="form-group">
+                                <div
+                                    class="custom-control custom-radio custom-control-inline"
+                                >
+                                    <input
+                                        type="radio"
+                                        id="morning"
+                                        name="period"
+                                        class="custom-control-input"
+                                        value="morning"
+                                        checked
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="morning"
+                                    >
+                                    الفترة الصباحية</label
+                                    >
+                                </div>
+                                <div
+                                    class="custom-control custom-radio custom-control-inline"
+                                >
+                                    <input
+                                        type="radio"
+                                        id="evening"
+                                        name="period"
+                                        class="custom-control-input"
+                                        value="evening"
+                                    />
+                                    <label
+                                        class="custom-control-label"
+                                        for="evening"
+                                        >الفترة المسائية</label
+                                    >
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div id="venue-section">
+                        
+
+                            <div class="form-group">
+                                <label>من</label
+                                    >
+                                <input
+                                    type="time"
+                                    name="from"
+                                    class="form-control"
+                                    placeholder="من"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>الى</label>
+                                <input
+                                    type="time"
+                                    name="to"
+                                    class="form-control"
+                                    placeholder="الى"
+                                />
+                            </div>
+
+
+                        </div>
+                         
 
                         <div class="form-group">
                             <label for="customRange3">السعر</label>
@@ -122,3 +204,20 @@
     </div>
 </div>
 @endsection
+
+ @section('script')
+    <script>
+        $("#venue-section").hide();
+        $("#hall-section").hide();
+        // $("#hall-control").click(function(){
+        //     $("#hall-section").show();
+        //     $("#venue-section").hide();
+
+        // });
+        // $("#venue-control").click(function(){
+        //     $("#venue-section").show();
+        //     $("#hall-section").hide();
+        // });
+
+    </script>
+  @endsection

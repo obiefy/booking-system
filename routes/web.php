@@ -71,6 +71,11 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
 
     // messages
     Route::get('/messages', 'MessageController@index')->name('message.index');
+
+    // Booking routes
+    Route::get('bookings', 'BookingController@index_admin')->name('booking.index_admin');
+    // Booking filter
+    Route::post('bookings', 'BookingController@filter')->name('booking.filter');
 });
 
 /*
